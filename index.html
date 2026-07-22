@@ -7,27 +7,23 @@
 <meta name="description" content="The Gathering of Evangelists: ten days set apart for soul winners. Harvest Factor — Where Soul Winners Assemble.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:        #100d09;
-    --ink-2:      #1b160f;
-    --ink-3:      #241d13;
+    --ink:        #0d0b08;
+    --ink-2:      #17130d;
+    --ink-3:      #221b12;
     --paper:      #ece2c6;
-    --paper-2:    #ddcda2;
-    --paper-ink:  #2b2115;
+    --paper-ink:  #241c10;
     --gold:       #c9a227;
     --gold-bright:#e8c766;
     --gold-dim:   #8a6f22;
-    --crimson:    #8a2323;
+    --crimson:    #9a2b2b;
     --muted:      #a89a78;
-    --rule:       rgba(201,162,39,0.35);
+    --rule:       rgba(201,162,39,0.28);
 
     --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-    --font-body:    'Lora', Georgia, 'Times New Roman', serif;
     --font-label:   'Oswald', 'Arial Narrow', Arial, sans-serif;
-
-    --measure: 66ch;
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
@@ -37,263 +33,260 @@
     margin:0;
     background:var(--ink);
     color:var(--paper);
-    font-family:var(--font-body);
-    font-size:17px;
-    line-height:1.65;
+    font-family:var(--font-label);
+    font-size:16.5px;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
 
-  /* film-grain / newsprint texture, fixed over everything */
   .grain{
     position:fixed; inset:0; z-index:999; pointer-events:none;
-    opacity:0.05; mix-blend-mode:overlay;
+    opacity:0.045; mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
   a{ color:inherit; }
-  img,svg{ max-width:100%; display:block; }
+  img{ max-width:100%; display:block; }
+  button{ font:inherit; }
 
-  .wrap{ max-width:1160px; margin:0 auto; padding:0 28px; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
 
   h1,h2,h3{ font-family:var(--font-display); font-weight:900; margin:0; text-wrap:balance; }
 
-  .label{ font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.14em; }
-
-  /* ---------- Masthead ---------- */
-  .masthead{ padding:34px 0 22px; text-align:center; }
-  .masthead__rule{ height:3px; background:var(--gold); }
-  .masthead__rule--bottom{ height:5px; margin-top:14px;
-    background:linear-gradient(var(--gold),var(--gold)) top/100% 2px no-repeat,
-               linear-gradient(var(--gold),var(--gold)) bottom/100% 1px no-repeat; }
-  .masthead__row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:10px 0; font-family:var(--font-label); font-size:11.5px;
-    letter-spacing:0.14em; color:var(--muted); text-transform:uppercase;
-  }
-  .masthead__logo{
-    font-size:clamp(2.6rem, 9vw, 6rem);
-    letter-spacing:0.01em;
-    color:var(--paper);
-    line-height:0.95;
-    margin:6px 0 4px;
-  }
-  .masthead__logo em{
-    font-style:italic; color:var(--gold);
-  }
-  .masthead__tagline{
-    margin:0; font-family:var(--font-label); font-weight:600;
-    letter-spacing:0.32em; font-size:clamp(11px,2vw,15px);
-    color:var(--gold-bright); text-transform:uppercase;
+  .eyebrow{
+    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.26em;
+    font-size:12px; font-weight:600; color:var(--gold-bright); margin:0 0 14px;
   }
 
-  /* ---------- Ticker ---------- */
-  .ticker{
-    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
-    background:var(--ink-2); overflow:hidden; white-space:nowrap;
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; background:rgba(13,11,8,0.86); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
   }
-  .ticker__track{
-    display:inline-flex; align-items:center;
-    animation:scroll-left 42s linear infinite;
-    padding:9px 0;
+  .nav__brand{ font-family:var(--font-display); font-weight:900; font-size:1.15rem; letter-spacing:0.02em; }
+  .nav__brand em{ font-style:italic; color:var(--gold); }
+  .nav__links{ display:flex; align-items:center; gap:28px; }
+  .nav__links a{
+    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.1em;
+    font-size:12.5px; font-weight:500; text-decoration:none; color:var(--muted);
   }
-  .ticker__track span{
-    font-family:var(--font-label); font-size:12.5px; letter-spacing:0.1em;
-    color:var(--muted); text-transform:uppercase; padding:0 22px;
-    border-right:1px solid var(--rule);
+  .nav__links a:hover{ color:var(--gold-bright); }
+  .nav__links .btn{ padding:10px 20px; font-size:12px; }
+  @media (max-width:760px){ .nav__links a:not(.btn){ display:none; } }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.11em;
+    font-size:14px; font-weight:600; text-decoration:none; cursor:pointer;
+    padding:16px 34px; border-radius:2px; transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    display:inline-block; border:none;
   }
-  @keyframes scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .btn--gold{ background:var(--gold); color:var(--ink); box-shadow:0 0 0 1px var(--gold-dim); }
+  .btn--gold:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(201,162,39,0.6); }
+  .btn--ghost{ background:transparent; color:var(--gold-bright); border:1px solid var(--gold-dim); }
+  .btn--ghost:hover{ border-color:var(--gold); background:rgba(201,162,39,0.08); }
+  .btn:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  /* ---------- Illustrated crowd scene (used in hero + final CTA) ---------- */
+  .scene{ position:relative; overflow:hidden; }
+  .scene__glow{
+    position:absolute; left:50%; top:8%; width:1500px; height:1500px; transform:translateX(-50%);
+    background:radial-gradient(closest-side, rgba(201,162,39,0.35), rgba(201,162,39,0.08) 40%, transparent 68%);
+    pointer-events:none;
+  }
+  .scene__rays{
+    position:absolute; inset:0; pointer-events:none; opacity:0.5;
+    background:repeating-conic-gradient(from 200deg at 50% 0%,
+      rgba(232,199,102,0.14) 0deg 3deg, transparent 3deg 11deg);
+    mix-blend-mode:screen;
+  }
+  .crowd{
+    position:absolute; left:0; right:0; bottom:0; height:38%;
+    display:flex; justify-content:center; align-items:flex-end; gap:clamp(8px,2vw,22px);
+    z-index:1; pointer-events:none;
+  }
+  .arm{ position:relative; width:13px; background:var(--ink); border-radius:7px 7px 2px 2px; transform-origin:bottom center; }
+  .arm::after{
+    content:""; position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+    width:19px; height:19px; border-radius:50%; background:var(--ink);
+  }
+  .scene__vignette{
+    position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to bottom, rgba(13,11,8,0.15), rgba(13,11,8,0.65) 70%, var(--ink) 100%);
+  }
 
   /* ---------- Hero ---------- */
   .hero{
-    position:relative; padding:min(14vw,110px) 0 70px;
-    display:flex; flex-direction:column; align-items:center; text-align:center;
-    overflow:hidden;
+    min-height:92vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:120px 0 60px;
   }
-  .hero__glow{
-    position:absolute; left:50%; bottom:0; width:1400px; height:900px;
-    transform:translateX(-50%);
-    background:radial-gradient(closest-side, rgba(201,162,39,0.30), rgba(201,162,39,0.08) 45%, transparent 70%);
-    z-index:0; pointer-events:none;
+  .hero__inner{ position:relative; z-index:3; max-width:900px; margin:0 auto; }
+  .hero__badge{
+    display:inline-flex; align-items:center; gap:10px; padding:8px 18px;
+    border:1px solid var(--gold-dim); border-radius:999px; margin-bottom:26px;
+    font-family:var(--font-label); font-size:11.5px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--gold-bright);
   }
-  .crowd{
-    position:absolute; left:0; right:0; bottom:0; height:150px;
-    display:flex; justify-content:center; align-items:flex-end; gap:clamp(10px,2.4vw,26px);
-    z-index:1; pointer-events:none;
-  }
-  .arm{ position:relative; width:14px; background:var(--ink); border-radius:7px 7px 2px 2px; transform-origin:bottom center; }
-  .arm::after{
-    content:""; position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-    width:20px; height:20px; border-radius:50%; background:var(--ink);
-  }
-  .kicker{
-    position:relative; z-index:2;
-    font-family:var(--font-label); color:var(--gold-bright); font-weight:600;
-    letter-spacing:0.28em; text-transform:uppercase; font-size:13px; margin:0 0 18px;
-  }
-  .hero__headline{
-    position:relative; z-index:2;
-    font-size:clamp(2.8rem, 8vw, 6.4rem); line-height:0.98; color:var(--paper);
+  .hero__badge::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--crimson); box-shadow:0 0 0 3px rgba(154,43,43,0.35); }
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 5.6rem); line-height:0.98; color:var(--paper);
     text-shadow:0 2px 0 rgba(0,0,0,0.4);
   }
-  .hero__headline .accent{ color:var(--gold); font-style:italic; }
+  .hero h1 em{ font-style:italic; color:var(--gold); }
   .hero__lede{
-    position:relative; z-index:2;
-    max-width:56ch; font-size:1.18rem; color:var(--paper); opacity:0.92; margin:22px 0 0;
+    max-width:52ch; margin:22px auto 0; font-size:1.1rem; color:var(--paper); opacity:0.88;
   }
-  .hero__lede em{ color:var(--gold-bright); font-style:italic; }
-
   .hero__facts{
-    position:relative; z-index:2;
     display:flex; flex-wrap:wrap; justify-content:center; gap:0;
-    margin:38px 0 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    margin:34px 0 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
   }
   .hero__facts > div{
-    padding:14px 30px; border-left:1px solid var(--rule);
-    display:flex; flex-direction:column; gap:4px; min-width:170px;
+    padding:14px 26px; border-left:1px solid var(--rule); min-width:150px;
   }
   .hero__facts > div:first-child{ border-left:none; }
-  .hero__facts .label{ font-size:10.5px; color:var(--muted); }
-  .hero__facts .value{ font-family:var(--font-display); font-weight:700; font-size:1.02rem; color:var(--gold-bright); }
-
-  .hero__cta{ position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:38px; }
-
-  .btn{
-    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.12em;
-    font-size:14px; font-weight:600; text-decoration:none;
-    padding:16px 34px; border-radius:2px; transition:transform 0.15s ease, box-shadow 0.15s ease;
-    display:inline-block;
-  }
-  .btn--gold{ background:var(--gold); color:var(--ink); box-shadow:0 0 0 1px var(--gold-dim); }
-  .btn--gold:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 8px 22px -6px rgba(201,162,39,0.55); }
-  .btn--ghost{ background:transparent; color:var(--gold-bright); border:1px solid var(--gold-dim); }
-  .btn--ghost:hover{ border-color:var(--gold); background:rgba(201,162,39,0.08); }
-
-  .stamp{
-    position:absolute; top:44px; right:6%; z-index:3;
-    font-family:var(--font-label); font-weight:700; text-transform:uppercase;
-    letter-spacing:0.06em; font-size:13px; text-align:center; line-height:1.25;
-    color:var(--crimson); border:3px solid var(--crimson); border-radius:50%;
-    width:96px; height:96px; display:flex; align-items:center; justify-content:center;
-    transform:rotate(-14deg); opacity:0.9;
-  }
-  .stamp::before, .stamp::after{ content:none; }
+  .hero__facts .k{ display:block; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+  .hero__facts .v{ display:block; font-family:var(--font-display); font-weight:700; font-size:1rem; color:var(--gold-bright); }
+  .hero__cta{ display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:34px; }
 
   /* ---------- Section shells ---------- */
-  section{ padding:80px 0; }
-  .section-title{
-    font-size:clamp(1.9rem,4vw,2.8rem); color:var(--paper); text-align:center; margin-bottom:12px;
-  }
-  .section-kicker{
-    text-align:center; color:var(--gold); font-family:var(--font-label);
-    letter-spacing:0.24em; font-size:12px; margin-bottom:14px;
-  }
-  .rule-center{ width:60px; height:3px; background:var(--gold); margin:0 auto 50px; }
+  section{ padding:88px 0; }
+  .section-head{ text-align:center; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(1.9rem,4vw,2.7rem); color:var(--paper); }
+  .rule-flank{ display:flex; align-items:center; justify-content:center; gap:22px; margin-bottom:14px; }
+  .rule-flank span{ height:2px; width:56px; background:var(--gold-dim); }
 
-  /* ---------- Mandate / clipping ---------- */
-  .mandate{ background:var(--ink-2); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
-  .clipping{
-    background:var(--paper); color:var(--paper-ink);
-    padding:clamp(28px,5vw,56px); max-width:920px; margin:0 auto;
-    box-shadow:0 26px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.15);
-    position:relative;
-  }
-  .clipping::before{
-    content:""; position:absolute; inset:10px; border:1px solid rgba(43,33,21,0.25); pointer-events:none;
-  }
-  .clipping__kicker{
-    font-family:var(--font-label); letter-spacing:0.22em; font-size:11.5px;
-    color:var(--crimson); text-transform:uppercase; margin:0 0 10px;
-  }
-  .clipping h2{ color:var(--paper-ink); font-size:clamp(1.7rem,4vw,2.5rem); margin-bottom:22px; }
-  .columns{ column-count:2; column-gap:38px; }
-  .columns p{ margin:0 0 1em; }
-  .drop-cap::first-letter{
-    font-family:var(--font-display); font-size:3.6em; float:left; line-height:0.8;
-    padding:0.05em 0.08em 0 0; color:var(--crimson); font-weight:900;
-  }
-  .pull-quote{
+  /* ---------- Mandate (short) ---------- */
+  .mandate{ background:var(--ink-2); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); position:relative; overflow:hidden; }
+  .mandate .crowd{ opacity:0.35; height:60%; }
+  .mandate__quote{
+    position:relative; z-index:2;
     font-family:var(--font-display); font-style:italic; font-weight:700;
-    font-size:clamp(1.4rem,3vw,2rem); text-align:center; color:var(--gold-bright);
-    max-width:820px; margin:56px auto 0; line-height:1.4; position:relative;
-    padding:0 20px;
+    font-size:clamp(1.5rem,3.4vw,2.5rem); text-align:center; color:var(--gold-bright);
+    max-width:840px; margin:0 auto; line-height:1.35;
   }
-  .pull-quote::before, .pull-quote::after{ color:var(--gold-dim); font-size:1.4em; }
-  .pull-quote::before{ content:"“"; }
-  .pull-quote::after{ content:"”"; }
-  .pull-quote cite{ display:block; font-style:normal; font-family:var(--font-label); font-size:12px; letter-spacing:0.18em; color:var(--muted); margin-top:18px; text-transform:uppercase; }
+  .mandate__ref{
+    position:relative; z-index:2; text-align:center; margin-top:18px;
+    font-family:var(--font-label); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+  }
+  .mandate__lines{
+    position:relative; z-index:2; display:flex; justify-content:center; gap:48px; flex-wrap:wrap;
+    margin-top:46px; text-align:center;
+  }
+  .mandate__lines p{ max-width:30ch; margin:0; font-size:0.98rem; color:var(--paper); opacity:0.85; }
 
-  /* ---------- Orders of the day / schedule ---------- */
-  .schedule{ list-style:none; margin:0 auto; padding:0; max-width:880px; }
-  .schedule li{
-    display:grid; grid-template-columns:110px 220px 1fr; gap:22px; align-items:baseline;
-    padding:22px 0; border-bottom:1px solid var(--rule);
+  /* ---------- Schedule ---------- */
+  .schedule-row{
+    display:flex; gap:16px; overflow-x:auto; padding:6px 4px 18px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
   }
-  .schedule li:first-child{ border-top:1px solid var(--rule); }
-  .schedule .day{ font-family:var(--font-label); color:var(--gold); font-weight:600; letter-spacing:0.08em; font-variant-numeric:tabular-nums; }
-  .schedule .theme{ font-family:var(--font-display); font-weight:700; font-size:1.15rem; color:var(--paper); }
-  .schedule .desc{ color:var(--muted); font-size:0.97rem; }
+  .schedule-row::-webkit-scrollbar{ height:6px; }
+  .schedule-row::-webkit-scrollbar-thumb{ background:var(--gold-dim); border-radius:3px; }
+  .day-card{
+    scroll-snap-align:start; flex:0 0 200px;
+    background:var(--ink-2); border:1px solid var(--rule); border-radius:4px;
+    padding:22px 18px;
+  }
+  .day-card .num{ font-family:var(--font-display); font-weight:900; font-size:2.1rem; color:var(--gold); line-height:1; }
+  .day-card .theme{ font-family:var(--font-display); font-weight:700; font-size:1.15rem; color:var(--paper); margin:10px 0 6px; }
+  .day-card .tag{ font-size:12.5px; letter-spacing:0.05em; color:var(--muted); text-transform:uppercase; }
 
   /* ---------- Who must assemble ---------- */
   .assemble{ background:var(--ink-2); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
-  .badges{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; max-width:900px; margin:0 auto; }
+  .badges{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:920px; margin:0 auto; }
   .badges span{
-    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.08em;
-    font-size:13px; font-weight:600; color:var(--gold-bright);
-    border:1px solid var(--gold-dim); padding:11px 20px; border-radius:2px;
+    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.07em;
+    font-size:12.5px; font-weight:600; color:var(--gold-bright);
+    border:1px solid var(--gold-dim); padding:10px 18px; border-radius:2px;
   }
 
-  /* ---------- Enlist ---------- */
-  .enlist{ text-align:center; }
-  .enlist p{ max-width:60ch; margin:16px auto 0; color:var(--muted); }
-  .enlist-form{
-    max-width:520px; margin:40px auto 0; display:flex; flex-direction:column; gap:14px; text-align:left;
+  /* ---------- Speakers ---------- */
+  .speakers-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
   }
-  .enlist-form label{ font-family:var(--font-label); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
-  .enlist-form input, .enlist-form select{
-    background:var(--ink-2); border:1px solid var(--rule); color:var(--paper);
-    font-family:var(--font-body); font-size:15px; padding:13px 14px; border-radius:2px;
+  .speaker{
+    background:var(--paper); border-radius:3px; padding:10px 10px 16px;
+    box-shadow:0 18px 34px -18px rgba(0,0,0,0.65);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    position:relative;
   }
-  .enlist-form input:focus, .enlist-form select:focus, a:focus-visible, button:focus-visible{
-    outline:2px solid var(--gold-bright); outline-offset:2px;
+  .speaker::before{ content:""; position:absolute; top:0; left:10px; right:10px; height:3px; background:var(--gold); }
+  .speaker:hover{ transform:translateY(-4px); box-shadow:0 22px 40px -16px rgba(0,0,0,0.75); }
+  .speaker__photo{
+    width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top center;
+    border-radius:2px; background:var(--ink-3); margin-top:8px;
   }
-  .enlist-form button{
-    margin-top:6px; cursor:pointer; border:none;
-    font-family:var(--font-label); text-transform:uppercase; letter-spacing:0.12em;
-    font-weight:600; font-size:14px; background:var(--gold); color:var(--ink);
-    padding:16px; border-radius:2px; transition:background 0.15s ease;
+  .speaker__photo--fallback{
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:900; font-size:2.1rem; color:var(--gold);
   }
-  .enlist-form button:hover{ background:var(--gold-bright); }
-  .fine-print{ font-size:12.5px; color:var(--muted); opacity:0.75; margin-top:18px; max-width:52ch; }
+  .speaker__name{
+    font-family:var(--font-display); font-weight:700; font-size:0.98rem;
+    color:var(--paper-ink); text-align:center; margin-top:12px; line-height:1.25;
+  }
+  @media (max-width:900px){ .speakers-grid{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:620px){ .speakers-grid{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+
+  /* ---------- Final CTA ---------- */
+  .cta-final{ text-align:center; position:relative; padding:120px 0; }
+  .cta-final .crowd{ opacity:0.45; }
+  .cta-final__inner{ position:relative; z-index:3; }
+  .cta-final h2{ font-size:clamp(2.2rem,5vw,3.6rem); color:var(--paper); max-width:16ch; margin:0 auto; }
+  .cta-final p{ max-width:46ch; margin:18px auto 0; color:var(--muted); }
+  .cta-final .btn{ margin-top:32px; }
 
   /* ---------- Footer ---------- */
-  footer{
-    border-top:3px solid var(--gold); padding:44px 0 30px; text-align:center;
-  }
-  .footer__brand{ font-family:var(--font-display); font-weight:900; font-size:1.5rem; color:var(--paper); margin:0; }
-  .footer__tag{ font-family:var(--font-label); letter-spacing:0.24em; font-size:11px; color:var(--gold); text-transform:uppercase; margin:8px 0 20px; }
-  .footer__verse{ font-family:var(--font-display); font-style:italic; color:var(--muted); max-width:50ch; margin:0 auto 20px; }
+  footer{ border-top:3px solid var(--gold); padding:44px 0 30px; text-align:center; }
+  .footer__brand{ font-family:var(--font-display); font-weight:900; font-size:1.4rem; color:var(--paper); margin:0; }
+  .footer__tag{ font-family:var(--font-label); letter-spacing:0.22em; font-size:11px; color:var(--gold); text-transform:uppercase; margin:8px 0 18px; }
+  .footer__verse{ font-family:var(--font-display); font-style:italic; color:var(--muted); max-width:48ch; margin:0 auto 18px; }
   .footer__meta{ font-size:12px; color:var(--muted); opacity:0.7; margin:0; }
 
   /* ---------- Reveal-on-scroll ---------- */
-  .reveal{ opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity 0.6s ease, transform 0.6s ease; }
   .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- Modal ---------- */
+  .modal{
+    position:fixed; inset:0; z-index:1000; display:none;
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .modal.is-open{ display:flex; }
+  .modal__backdrop{ position:absolute; inset:0; background:rgba(8,6,4,0.82); backdrop-filter:blur(3px); }
+  .modal__panel{
+    position:relative; z-index:1; width:100%; max-width:680px; max-height:88vh;
+    background:var(--ink-2); border:1px solid var(--rule); border-radius:6px;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,0.8);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .modal__header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px; border-bottom:1px solid var(--rule);
+  }
+  .modal__title{ font-family:var(--font-display); font-weight:700; font-size:1.1rem; color:var(--gold-bright); margin:0; }
+  .modal__close{
+    background:none; border:none; color:var(--muted); font-size:26px; line-height:1;
+    cursor:pointer; padding:4px 8px;
+  }
+  .modal__close:hover{ color:var(--gold-bright); }
+  .modal__body{ overflow-y:auto; }
+  .modal__body iframe{ width:100%; height:min(75vh, 900px); border:0; display:block; }
 
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
-    .ticker__track{ animation:none; }
     .reveal{ transition:none; opacity:1; transform:none; }
     .btn--gold:hover{ transform:none; }
+    .speaker:hover{ transform:none; }
   }
 
   @media (max-width:720px){
-    .masthead__row{ flex-direction:column; gap:6px; align-items:center; text-align:center; }
-    .columns{ column-count:1; }
-    .schedule li{ grid-template-columns:1fr; gap:4px; }
-    .schedule .day{ font-size:13px; }
-    .stamp{ width:74px; height:74px; font-size:11px; top:20px; right:5%; }
+    section{ padding:64px 0; }
+    .hero{ padding-top:100px; }
     .hero__facts > div{ border-left:none; border-top:1px solid var(--rule); }
     .hero__facts > div:first-child{ border-top:none; }
+    .mandate__lines{ gap:26px; }
   }
 </style>
 </head>
@@ -301,109 +294,81 @@
 
 <div class="grain" aria-hidden="true"></div>
 
-<header class="masthead">
-  <div class="wrap">
-    <div class="masthead__rule masthead__rule--top"></div>
-    <div class="masthead__row">
-      <span>Est. in the Spirit of the Great Commission</span>
-      <span>Special Bulletin &middot; No. 1</span>
-    </div>
-    <h1 class="masthead__logo">HARVEST <em>FACTOR</em></h1>
-    <p class="masthead__tagline">Where Soul Winners Assemble</p>
-    <div class="masthead__rule masthead__rule--bottom"></div>
+<nav class="nav">
+  <span class="nav__brand">HARVEST <em>FACTOR</em></span>
+  <div class="nav__links">
+    <a href="#schedule">Schedule</a>
+    <a href="#speakers">Speakers</a>
+    <button type="button" class="btn btn--gold js-open-enlist">Enlist</button>
   </div>
-</header>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span>THE HARVEST IS PLENTIOUS, THE LABOURERS ARE FEW</span>
-    <span>MATTHEW 9:37&ndash;38</span>
-    <span>PRAY YE THEREFORE THE LORD OF THE HARVEST</span>
-    <span>GO YE INTO ALL THE WORLD &mdash; MARK 16:15</span>
-    <span>TEN DAYS SET APART FOR SOUL WINNERS</span>
-    <span>THE FIELDS ARE WHITE ALREADY TO HARVEST &mdash; JOHN 4:35</span>
-    <span>THE HARVEST IS PLENTIOUS, THE LABOURERS ARE FEW</span>
-    <span>MATTHEW 9:37&ndash;38</span>
-    <span>PRAY YE THEREFORE THE LORD OF THE HARVEST</span>
-    <span>GO YE INTO ALL THE WORLD &mdash; MARK 16:15</span>
-    <span>TEN DAYS SET APART FOR SOUL WINNERS</span>
-    <span>THE FIELDS ARE WHITE ALREADY TO HARVEST &mdash; JOHN 4:35</span>
-  </div>
-</div>
+</nav>
 
 <main>
-  <section class="hero">
-    <div class="hero__glow" aria-hidden="true"></div>
+  <section class="hero scene">
+    <div class="scene__glow" aria-hidden="true"></div>
+    <div class="scene__rays" aria-hidden="true"></div>
     <div class="crowd" aria-hidden="true"></div>
-    <div class="stamp">Urgent<br>Call</div>
+    <div class="scene__vignette" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="kicker">A Dispatch to Every Frontline</p>
-      <h2 class="hero__headline">THE GATHERING<br><span class="accent">OF EVANGELISTS</span></h2>
-      <p class="hero__lede">Ten days, set apart. One mandate, unchanged since the upper room: <em>go and win the lost.</em> Evangelists, street preachers, and soul-winners &mdash; this is your assembly point.</p>
-      <div class="hero__facts">
-        <div>
-          <span class="label">When</span>
-          <span class="value">10 Days &middot; Dates to be announced</span>
+      <div class="hero__inner">
+        <span class="hero__badge">Ten-Day Gathering of Evangelists</span>
+        <h1>SOUL WINNERS,<br><em>ASSEMBLE.</em></h1>
+        <p class="hero__lede">One mandate, unchanged since the upper room: go and win the lost. Ten days of fire, strategy, and deployment for those who take souls seriously.</p>
+        <div class="hero__facts">
+          <div><span class="k">When</span><span class="v">10 Days &middot; TBA</span></div>
+          <div><span class="k">Where</span><span class="v">Venue TBA</span></div>
+          <div><span class="k">Who</span><span class="v">Evangelists &amp; Soul-Winners</span></div>
         </div>
-        <div>
-          <span class="label">Where</span>
-          <span class="value">Venue to be announced</span>
+        <div class="hero__cta">
+          <button type="button" class="btn btn--gold js-open-enlist">Enlist for the Gathering</button>
+          <a href="#speakers" class="btn btn--ghost">See the Lineup</a>
         </div>
-        <div>
-          <span class="label">Who</span>
-          <span class="value">Evangelists &amp; Soul-Winners</span>
-        </div>
-      </div>
-      <div class="hero__cta">
-        <a href="#enlist" class="btn btn--gold">Enlist for the Gathering</a>
-        <a href="#mandate" class="btn btn--ghost">Read the Mandate</a>
       </div>
     </div>
   </section>
 
-  <section class="mandate" id="mandate">
+  <section class="mandate scene" id="mandate">
+    <div class="crowd" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="clipping reveal">
-        <p class="clipping__kicker">From the Editor&rsquo;s Desk</p>
-        <h2>The Fields Are White Already to Harvest</h2>
-        <div class="columns">
-          <p class="drop-cap">There is a field, and it is ready. Not tomorrow &mdash; now. Every evangelist who has ever knelt at an altar and asked God for the nations knows the weight of this hour: the harvest does not wait for the comfortable, it waits for the sent. Harvest Factor exists for one reason &mdash; to gather the soul-winners of this generation into one room, one mandate, one fire.</p>
-          <p>This is not a conference to attend. It is a mobilization to join. For ten days, evangelists, street preachers, missionaries, and everyday believers with a hunger for souls will assemble &mdash; not to be entertained, but to be equipped, armed, and sent back to the harvest field with greater fire than they arrived with.</p>
-          <p>We will pray like intercessors. We will study like theologians. We will preach like it is the last altar call this city will ever get. Because for someone, it will be.</p>
-        </div>
+      <p class="mandate__quote reveal">&ldquo;The fields are white already to harvest.&rdquo;</p>
+      <p class="mandate__ref reveal">John 4:35</p>
+      <div class="mandate__lines reveal">
+        <p>Not a conference to attend. A mobilization to join.</p>
+        <p>Ten days to be equipped, armed, and sent back to the field.</p>
+        <p>The harvest doesn&rsquo;t wait for the comfortable. It waits for the sent.</p>
       </div>
-      <blockquote class="pull-quote reveal">
-        We are not gathering an audience. We are mobilizing an army of soul-winners for the last great harvest.
-        <cite>&mdash; The Call of Harvest Factor</cite>
-      </blockquote>
     </div>
   </section>
 
-  <section class="orders" id="orders">
+  <section id="schedule">
     <div class="wrap">
-      <p class="section-kicker reveal">Order of Battle</p>
-      <h2 class="section-title reveal">Ten Days, One Assignment Each</h2>
-      <div class="rule-center"></div>
-      <ol class="schedule">
-        <li class="reveal"><span class="day">Day 01</span><span class="theme">Consecration</span><span class="desc">An altar call for the called &mdash; soul-winners set themselves apart before the work begins.</span></li>
-        <li class="reveal"><span class="day">Day 02</span><span class="theme">The War Room</span><span class="desc">Corporate intercession and fasting for the harvest field.</span></li>
-        <li class="reveal"><span class="day">Day 03</span><span class="theme">The Word</span><span class="desc">Sound doctrine for soul-winners &mdash; building on rock, not sand.</span></li>
-        <li class="reveal"><span class="day">Day 04</span><span class="theme">The Fire</span><span class="desc">Impartation and anointing for bold, Spirit-led evangelism.</span></li>
-        <li class="reveal"><span class="day">Day 05</span><span class="theme">The Streets</span><span class="desc">Open-air evangelism training &mdash; taking the altar to the sidewalk.</span></li>
-        <li class="reveal"><span class="day">Day 06</span><span class="theme">The Nations</span><span class="desc">A missions strategy briefing for reaching unreached fields.</span></li>
-        <li class="reveal"><span class="day">Day 07</span><span class="theme">The Testimony</span><span class="desc">Frontline reports from soul-winners already in the field.</span></li>
-        <li class="reveal"><span class="day">Day 08</span><span class="theme">The Compassion</span><span class="desc">Mercy ministry and deliverance &mdash; the harvest is also the hurting.</span></li>
-        <li class="reveal"><span class="day">Day 09</span><span class="theme">The Sending</span><span class="desc">A commissioning service &mdash; hands laid on, assignments given.</span></li>
-        <li class="reveal"><span class="day">Day 10</span><span class="theme">The Harvest</span><span class="desc">A citywide crusade and mass outreach &mdash; the mandate, in motion.</span></li>
-      </ol>
+      <div class="section-head reveal">
+        <div class="rule-flank"><span></span></div>
+        <p class="eyebrow">Order of Battle</p>
+        <h2>Ten Days, One Assignment Each</h2>
+      </div>
+      <div class="schedule-row reveal">
+        <div class="day-card"><span class="num">01</span><p class="theme">Consecration</p><p class="tag">Altar call for the called</p></div>
+        <div class="day-card"><span class="num">02</span><p class="theme">The War Room</p><p class="tag">Intercession &amp; fasting</p></div>
+        <div class="day-card"><span class="num">03</span><p class="theme">The Word</p><p class="tag">Sound doctrine for soul-winners</p></div>
+        <div class="day-card"><span class="num">04</span><p class="theme">The Fire</p><p class="tag">Impartation &amp; anointing</p></div>
+        <div class="day-card"><span class="num">05</span><p class="theme">The Streets</p><p class="tag">Open-air evangelism training</p></div>
+        <div class="day-card"><span class="num">06</span><p class="theme">The Nations</p><p class="tag">Missions strategy briefing</p></div>
+        <div class="day-card"><span class="num">07</span><p class="theme">The Testimony</p><p class="tag">Frontline reports</p></div>
+        <div class="day-card"><span class="num">08</span><p class="theme">The Compassion</p><p class="tag">Mercy &amp; deliverance</p></div>
+        <div class="day-card"><span class="num">09</span><p class="theme">The Sending</p><p class="tag">Commissioning service</p></div>
+        <div class="day-card"><span class="num">10</span><p class="theme">The Harvest</p><p class="tag">Citywide crusade &amp; outreach</p></div>
+      </div>
     </div>
   </section>
 
-  <section class="assemble" id="assemble">
+  <section class="assemble">
     <div class="wrap">
-      <p class="section-kicker reveal">Roll Call</p>
-      <h2 class="section-title reveal">Who Must Assemble</h2>
-      <div class="rule-center"></div>
+      <div class="section-head reveal">
+        <div class="rule-flank"><span></span></div>
+        <p class="eyebrow">Roll Call</p>
+        <h2>Who Must Assemble</h2>
+      </div>
       <div class="badges reveal">
         <span>Evangelists</span>
         <span>Street Preachers</span>
@@ -417,30 +382,42 @@
     </div>
   </section>
 
-  <section class="enlist" id="enlist">
+  <section id="speakers">
     <div class="wrap">
-      <p class="section-kicker reveal">Answer the Call</p>
-      <h2 class="section-title reveal">Enlist for the Gathering</h2>
-      <p class="reveal">Places are limited to those who will actually go to the field. Register below to hold your seat at the Gathering of Evangelists.</p>
-      <form class="enlist-form reveal" action="#" method="post">
-        <label for="name">Full Name</label>
-        <input id="name" name="name" type="text" placeholder="Your name" required>
-        <label for="email">Email Address</label>
-        <input id="email" name="email" type="email" placeholder="you@example.com" required>
-        <label for="role">I Serve As</label>
-        <select id="role" name="role">
-          <option>Evangelist</option>
-          <option>Street Preacher</option>
-          <option>Pastor</option>
-          <option>Missionary</option>
-          <option>Church Planter</option>
-          <option>Youth Leader</option>
-          <option>Intercessor</option>
-          <option>Other Soul-Winner</option>
-        </select>
-        <button type="submit">Enlist Now</button>
-      </form>
-      <p class="fine-print">Registration opens soon. Dates, venue, and enlistment details for the Gathering of Evangelists will be announced here first.</p>
+      <div class="section-head reveal">
+        <div class="rule-flank"><span></span></div>
+        <p class="eyebrow">On the Platform</p>
+        <h2>Featured Speakers</h2>
+      </div>
+      <div class="speakers-grid reveal">
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/PRP.png?tr=f-auto,q-auto,w-600" alt="Dr. Rod Parsley" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Dr. Rod Parsley</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Levi_Lutz.png?tr=f-auto,q-auto,w-600" alt="Levi Lutz" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Levi Lutz</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Daniel_Kolenda.png?tr=f-auto,q-auto,w-600" alt="Daniel Kolenda" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Daniel Kolenda</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Scott_Camp.png?tr=f-auto,q-auto,w-600" alt="Dr. Scott Camp" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Dr. Scott Camp</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Amos.png?tr=f-auto,q-auto,w-600" alt="David Amos" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">David Amos</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/ABP.png?tr=f-auto,q-auto,w-600" alt="Ashton Parsley" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Ashton Parsley</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Malcoby_Donaldson.png?tr=f-auto,q-auto,w-600" alt="Macoby Donaldson" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Macoby Donaldson</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Osteen.png?tr=f-auto,q-auto,w-600" alt="Jonathan Osteen" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Jonathan Osteen</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Stanley.png?tr=f-auto,q-auto,w-600" alt="Patrick Stanley" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Patrick Stanley</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/David-Remedios.png?tr=f-auto,q-auto,w-600" alt="Dr. David Remedios" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Dr. David Remedios</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Debra_George.png?tr=f-auto,q-auto,w-600" alt="Debra George" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Debra George</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/James_Tan.png?tr=f-auto,q-auto,w-600" alt="Dr. James Tan" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Dr. James Tan</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Tyrone_Gray.png?tr=f-auto,q-auto,w-600" alt="Tyrone Gray" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Tyrone Gray</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/YUZU.png?tr=f-auto,q-auto,w-600" alt="Aslan Y&uuml;z&uuml;" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Aslan Y&uuml;z&uuml;</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Taira_Markham_2.png?tr=f-auto,q-auto,w-600" alt="Taira Markham" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Taira Markham</p></div>
+        <div class="speaker"><img class="speaker__photo" src="https://ik.imagekit.io/vddpcxj7e/harvest-factor/Turnbull.png?tr=f-auto,q-auto,w-600" alt="Joe Turnbull" loading="lazy" onerror="imgFallback(this)"><p class="speaker__name">Joe Turnbull</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final scene">
+    <div class="scene__glow" aria-hidden="true"></div>
+    <div class="crowd" aria-hidden="true"></div>
+    <div class="scene__vignette" aria-hidden="true"></div>
+    <div class="wrap cta-final__inner">
+      <h2 class="reveal">Answer the Call. Assemble.</h2>
+      <p class="reveal">Seats are limited to those who will actually go to the field. Registration opens soon.</p>
+      <button type="button" class="btn btn--gold js-open-enlist reveal">Enlist for the Gathering</button>
     </div>
   </section>
 </main>
@@ -454,24 +431,45 @@
   </div>
 </footer>
 
+<div class="modal" id="enlist-modal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="enlist-modal-title">
+    <div class="modal__header">
+      <p class="modal__title" id="enlist-modal-title">Enlist for the Gathering</p>
+      <button type="button" class="modal__close" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfMaMlwsvzE9NtHibiRiRx4K0T1NbCLG1dguoI4cnZ3VPw7nA/viewform?embedded=true" title="Harvest Factor Registration Form">Loading&hellip;</iframe>
+    </div>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Raised-hands crowd silhouette, generated once
-  (function(){
-    var crowd = document.querySelector('.crowd');
-    if(!crowd) return;
-    var count = 11;
+  // Replace a broken/blocked speaker photo with an initials placeholder
+  function imgFallback(img){
+    var name = img.alt || '';
+    var initials = name.replace(/^(Dr\.|Rev\.)\s*/i, '').split(/\s+/).map(function(w){ return w[0] || ''; }).slice(0,2).join('');
+    var div = document.createElement('div');
+    div.className = 'speaker__photo speaker__photo--fallback';
+    div.textContent = initials.toUpperCase();
+    img.replaceWith(div);
+  }
+
+  // Illustrated raised-hands crowd, generated per .crowd container
+  document.querySelectorAll('.crowd').forEach(function(crowd){
+    var count = 13;
     for(var i=0;i<count;i++){
       var arm = document.createElement('div');
       arm.className = 'arm';
-      var height = 60 + Math.abs(Math.sin(i*1.3))*70;
-      var rotate = (i - (count-1)/2) * 3.4;
+      var height = 55 + Math.abs(Math.sin(i*1.3))*85;
+      var rotate = (i - (count-1)/2) * 3.1;
       arm.style.height = height + 'px';
       arm.style.transform = 'rotate(' + rotate + 'deg)';
       crowd.appendChild(arm);
     }
-  })();
+  });
 
   // Reveal-on-scroll
   if('IntersectionObserver' in window){
@@ -482,11 +480,42 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
   }
+
+  // Enlist modal
+  (function(){
+    var modal = document.getElementById('enlist-modal');
+    var lastFocused = null;
+
+    function openModal(){
+      lastFocused = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      var closeBtn = modal.querySelector('.modal__close');
+      if(closeBtn) closeBtn.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      if(lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.js-open-enlist').forEach(function(btn){
+      btn.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+    });
+    modal.querySelectorAll('[data-close]').forEach(function(el){
+      el.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
 </script>
 
 </body>
